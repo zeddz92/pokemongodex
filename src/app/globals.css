@@ -15,8 +15,11 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+html {
+  @apply h-full;
+}
 body {
+  @apply flex flex-col h-full overflow-hidden;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -30,4 +33,69 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.status-separator {
+  width: 2px;
+  @apply h-full bg-neutral-300 rounded z-10;
+}
+
+
+/* Animations */
+.slide-enter {
+  transform: translateY(-100%);
+  transition: 0.1s cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slide-enter input {
+  /* background-color: #b9deec; */
+}
+
+.dark .slide-enter input {
+  /* @apply bg-primary-300; */
+}
+
+.slide-enter-active {
+  transform: translateY(0%);
+}
+
+.slide-exit {
+  transform: translateY(0%);
+  transition: 0.1s;
+}
+.slide-exit-active {
+  transform: translateY(-100%);
+}
+.slide-exit-done {
+  transform: translateY(-100%);
+  display: none;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  /* @apply hidden; */
+  width: 10px;
+
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+  /* background: #f1f1f1; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

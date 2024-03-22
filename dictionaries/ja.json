@@ -1,0 +1,10 @@
+{
+  "locale": "Japanese",
+  "main_page": {
+    "search": "検索"
+  },
+  "pokemon": {
+    "shadow": "シャドー",
+    "mega": "メガ"
+  }
+}

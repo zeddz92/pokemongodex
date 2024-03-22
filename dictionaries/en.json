@@ -1,0 +1,17 @@
+{
+  "locale": "English",
+  "server-component": {
+    "welcome": "Welcome"
+  },
+  "counter": {
+    "increment": "Increment",
+    "decrement": "Decrement"
+  },
+  "main_page": {
+    "search": "Search"
+  },
+  "pokemon": {
+    "shadow": "Shadow",
+    "mega": "Mega"
+  }
+}
