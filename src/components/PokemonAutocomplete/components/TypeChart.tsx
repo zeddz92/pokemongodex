@@ -30,14 +30,7 @@ export const TypeChart: FC<TypeChartProps> = ({
             key={key}
             className="flex items-center gap-1.5 flex flex-shrink-0"
           >
-            <span
-              className={classNames(" text-sm", {
-                "text-green-400": val < 0,
-                "text-red-400": val > 0,
-              })}
-            >
-              {val}x
-            </span>
+            <span className="text-red-400 text-sm">{val}x</span>
             <Image
               alt={id}
               title={id}
@@ -55,14 +48,7 @@ export const TypeChart: FC<TypeChartProps> = ({
             key={key}
             className="flex items-center gap-1.5 flex flex-shrink-0"
           >
-            <span
-              className={classNames(" text-sm", {
-                "text-green-400": val < 0,
-                "text-red-400": val > 0,
-              })}
-            >
-              {val}x
-            </span>
+            <span className="text-green-400 text-sm">{val}x</span>
             <Image
               alt={id}
               title={id}

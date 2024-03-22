@@ -80,7 +80,6 @@ export const PokemonAutocomplete: FC<PokemonAutocompleteProps> = () => {
       id="pokemon-autocomplete"
       fullWidth
       size="small"
-      open={true}
       disableListWrap
       PopperComponent={StyledPopper}
       ListboxComponent={ListboxComponent}

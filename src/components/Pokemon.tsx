@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { FC } from "react";
 import { PokemonStatus } from "./PokemonStatus";
+import { PokemonImage } from "./PokemonImage";
 
 export type PokemonProps = {
   name: string;
@@ -36,7 +37,7 @@ export const Pokemon: FC<PokemonProps> = ({
   rate,
 }) => {
   return (
-    <div className="relative flex flex-col items-center gap-3 bg-gray-800 rounded py-3 bg-opacity-60 ">
+    <div className="relative flex flex-col items-center gap-3 bg-slate-900 rounded py-3 bg-opacity-60 ">
       {/* <Image
         fill
         className="absolute inset-0 opacity-65"
@@ -47,7 +48,7 @@ export const Pokemon: FC<PokemonProps> = ({
       /> */}
 
       <div className="absolute left-0 bottom-0 m-2">
-        <PokemonStatus atk={2} def={15} hp={15} />
+        {/* <PokemonStatus atk={2} def={15} hp={15} /> */}
       </div>
       <div className="rate absolute top-0 left-0 bg-gray-800 py-2 px-4 m-1.5 rounded text-gray-300 font-semibold">
         <span className="text-sm">{rate}</span>
@@ -94,33 +95,18 @@ export const Pokemon: FC<PokemonProps> = ({
             />
           ))}
         </div>
-        <div className="relative w-32 h-32">
-          <Image
-            fill
+        <div className="flex flex-col items-center gap-3">
+          <PokemonImage
             alt={name}
-            // className="w-32 h-32"
+            isShadow={isShadow}
             loading="lazy"
-            objectFit="scale-down"
-            // width={124}
-            // height={124}
+            width={128}
+            height={128}
             src={img}
           />
-          {isShadow && (
-            <Image
-              fill
-              className="absolute inset-0 opacity-80"
-              alt="shadow_background"
-              loading="lazy"
-              src="/shadow_background.png"
-            />
-          )}
-        </div>
-
-        <div className="w-full flex">
           <span className="text-gray-300 text-sm font-semibold shadow">
             {isShadow && "Shadow"} {names["English"]}
           </span>
-          <div className="align">link</div>
         </div>
       </div>
     </div>

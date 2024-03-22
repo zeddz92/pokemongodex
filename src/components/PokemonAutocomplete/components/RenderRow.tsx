@@ -16,6 +16,8 @@ import { PokemonProps } from "@/components/Pokemon";
 import { TierList } from "./TierList";
 import { TypeChart } from "./TypeChart";
 import { BroadcastChannel } from "broadcast-channel";
+import Fade from "@mui/material/Fade";
+import Paper from "@mui/material/Paper";
 import { v4 as uuid } from "uuid";
 
 import Image from "next/image";
@@ -73,6 +75,7 @@ export const RenderRow = (
     });
     new BroadcastChannel("action-click-event").postMessage(option.name);
   };
+  console.log(anchor);
 
   return (
     <Box component="li" {...dataSet[0]} noWrap style={inlineStyle}>
@@ -142,23 +145,36 @@ export const RenderRow = (
         <TierList tiers={option.tiers!} />
       </div>
       <Popper
-        disablePortal
-        open={anchor.type === "ratings"}
+        // disablePortal
+        open={anchor.type === PopperType.Ratings}
         anchorEl={anchor.el}
         sx={{ zIndex: 99999 }}
-        className="bg-gray-900 z-50 w-full p-2"
+        className="bg-gray-900 z-50 w-full p-2 mx-4"
+        transition
       >
-        <TierList hiddenMobile={false} tiers={option.tiers!} />
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={200}>
+            <Paper sx={{ background: "transparent" }}>
+              <TierList hiddenMobile={false} tiers={option.tiers!} />
+            </Paper>
+          </Fade>
+        )}
       </Popper>
 
       <Popper
-        disablePortal
-        open={anchor.type === "types"}
+        open={anchor.type === PopperType.Types}
         anchorEl={anchor.el}
-        sx={{ zIndex: 99999 }}
-        className="bg-gray-900 z-50 w-full p-2"
+        sx={{ zIndex: 99999, margin: 25 }}
+        className="bg-gray-900 z-50 w-full p-2 mx-4"
+        transition
       >
-        <TypeChart hiddenMobile={false} data={option.typeChart} />
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={200}>
+            <Paper sx={{ background: "transparent" }}>
+              <TypeChart hiddenMobile={false} data={option.typeChart} />
+            </Paper>
+          </Fade>
+        )}
       </Popper>
     </Box>
   );
