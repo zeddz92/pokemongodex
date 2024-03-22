@@ -126,8 +126,8 @@ export default function Home() {
                         </button> */}
                       </div>
                       <div className="mt-4 grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-5 flex-wrap justify-start">
-                        {pokemon.map((p) => (
-                          <Pokemon key={`${name}-${p.name}`} {...p} />
+                        {pokemon.map((p: any) => (
+                          <Pokemon key={p.key} {...p} />
                         ))}
                       </div>
                     </div>

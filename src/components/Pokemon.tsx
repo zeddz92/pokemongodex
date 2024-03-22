@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { FC } from "react";
 import { PokemonStatus } from "./PokemonStatus";
 import { PokemonImage } from "./PokemonImage";
+import { Pokemon as PokemonT } from "../types/Pokemon";
 
 export type PokemonProps = {
   name: string;
@@ -27,7 +28,7 @@ export type PokemonProps = {
   };
 };
 
-export const Pokemon: FC<PokemonProps> = ({
+export const Pokemon: FC<PokemonT> = ({
   name,
   names,
   img,
