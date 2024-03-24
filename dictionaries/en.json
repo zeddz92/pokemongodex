@@ -1,17 +1,19 @@
 {
   "locale": "English",
-  "server-component": {
-    "welcome": "Welcome"
-  },
-  "counter": {
-    "increment": "Increment",
-    "decrement": "Decrement"
-  },
   "main_page": {
     "search": "Search"
   },
+  "leagues": {
+    "greatLeague": "Great League",
+    "ultraLeague": "Ultra League",
+    "masterLeague": "Master League",
+    "attackers": "Attackers"
+  },
   "pokemon": {
     "shadow": "Shadow",
-    "mega": "Mega"
+    "mega": "Mega",
+    "typeChart": "Type Chart",
+    "evolutionaryLine": "Evolutionary Line",
+    "tiers": "Tiers"
   }
 }

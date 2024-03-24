@@ -3,8 +3,16 @@
   "main_page": {
     "search": "検索"
   },
+  "leagues": {
+    "greatLeague": "Great League",
+    "ultraLeague": "Ultra League",
+    "masterLeague": "Master League"
+  },
   "pokemon": {
     "shadow": "シャドー",
-    "mega": "メガ"
+    "mega": "メガ",
+    "typeChart": "タイプチャート",
+    "evolutionaryLine": "進化系ライン",
+    "tiers": "階層"
   }
 }

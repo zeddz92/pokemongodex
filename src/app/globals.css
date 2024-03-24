@@ -99,3 +99,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.drawer-container {
+  @apply flex flex-col gap-2 py-3;
+}
+.drawer-title {
+  @apply text-xs text-gray-300 font-semibold py-1 bg-blue-600 bg-opacity-25 w-full text-center;
+}

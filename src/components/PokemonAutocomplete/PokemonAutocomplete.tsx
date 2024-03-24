@@ -12,6 +12,7 @@ import ListboxComponent from "./components/ListBoxComponent";
 import { PokemonProps } from "../Pokemon";
 import { I18nContext } from "@/contexts/I18nContext";
 import { getOptions } from "./utils/getOptions";
+import { DrawerContext } from "@/contexts/DrawerContext";
 
 type PokemonAutocompleteProps = {
   onSelect(pokemon: PokemonProps): void;
@@ -54,6 +55,7 @@ export const PokemonAutocomplete: FC<PokemonAutocompleteProps> = () => {
     ),
     []
   );
+  const { openDrawer } = useContext(DrawerContext);
 
   const filterOptions = useCallback(
     (options: PokemonProps[], state: FilterOptionsState<PokemonProps>) => {
@@ -79,7 +81,14 @@ export const PokemonAutocomplete: FC<PokemonAutocompleteProps> = () => {
     <Autocomplete
       id="pokemon-autocomplete"
       fullWidth
+      openOnFocus
+      clearOnBlur={false}
       size="small"
+      onChange={(e, data) => {
+        if (data) {
+          openDrawer(data as any);
+        }
+      }}
       disableListWrap
       PopperComponent={StyledPopper}
       ListboxComponent={ListboxComponent}

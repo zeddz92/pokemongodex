@@ -16,7 +16,7 @@ export const TierList: FC<TierListProps> = ({
   return (
     <div
       className={classNames(
-        "flex items-center gap-1.5 w-full md:w-fit justify-end",
+        "flex items-center gap-1.5 w-full md:w-fit justify-center",
         { "!hidden md:!flex": hiddenMobile },
         className
       )}

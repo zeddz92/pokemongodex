@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { PokemonStatus } from "./PokemonStatus";
 import { PokemonImage } from "./PokemonImage";
 import { Pokemon as PokemonT } from "../types/Pokemon";
+import { I18nContext } from "@/contexts/I18nContext";
 
 export type PokemonProps = {
   name: string;
@@ -37,17 +38,9 @@ export const Pokemon: FC<PokemonT> = ({
   isShadow,
   rate,
 }) => {
+  const { dictionary } = useContext(I18nContext);
   return (
     <div className="relative flex flex-col items-center gap-3 bg-slate-900 rounded py-3 bg-opacity-60 ">
-      {/* <Image
-        fill
-        className="absolute inset-0 opacity-65"
-        alt="shadow_background"
-        loading="lazy"
-        
-        src={`/types/${types[0]}.png`}
-      /> */}
-
       <div className="absolute left-0 bottom-0 m-2">
         {/* <PokemonStatus atk={2} def={15} hp={15} /> */}
       </div>
@@ -101,12 +94,12 @@ export const Pokemon: FC<PokemonT> = ({
             alt={name}
             isShadow={isShadow}
             loading="lazy"
-            width={128}
-            height={128}
+            width={90}
+            height={90}
             src={img}
           />
           <span className="text-gray-300 text-sm font-semibold shadow">
-            {isShadow && "Shadow"} {names["English"]}
+            {isShadow && dictionary.pokemon.shadow} {names[dictionary.locale]}
           </span>
         </div>
       </div>

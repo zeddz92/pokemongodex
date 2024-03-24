@@ -1,27 +1,14 @@
-import { PokemonImage } from "@/components/PokemonImage";
-import { Dictionary, I18nContext } from "@/contexts/I18nContext";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import {
-  ListSubheader,
-  Box,
-  ListItemButton,
-  ListItemText,
-  Popper,
-} from "@mui/material";
-import classNames from "classnames";
-import React, { useState, useContext, useEffect } from "react";
-import { ListChildComponentProps } from "react-window";
-import { LISTBOX_PADDING } from "./ListBoxComponent";
 import { PokemonProps } from "@/components/Pokemon";
+import { PokemonImage } from "@/components/PokemonImage";
+import { I18nContext } from "@/contexts/I18nContext";
+import { Pokemon } from "@/types/Pokemon";
+import { Box } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { ListChildComponentProps } from "react-window";
+
+import { LISTBOX_PADDING } from "./ListBoxComponent";
 import { TierList } from "./TierList";
 import { TypeChart } from "./TypeChart";
-import { BroadcastChannel } from "broadcast-channel";
-import Fade from "@mui/material/Fade";
-import Paper from "@mui/material/Paper";
-import { v4 as uuid } from "uuid";
-
-import Image from "next/image";
-import { Pokemon } from "@/types/Pokemon";
 
 // const bc = new BroadcastChannel("action-click-event");
 enum PopperType {
@@ -44,38 +31,10 @@ export const RenderRow = (
 
   const option = dataSet[1] as Pokemon;
 
-  useEffect(() => {
-    new BroadcastChannel("action-click-event").onmessage = (data) => {
-      // if (!!anchorEl && data !== option.id) {
-      //   console.log("Closing?", data);
-      //   setAnchorEl(null);
-      // }
-      if (anchor.el && data !== option.name) {
-        setAnchor({});
-      }
-    };
-  }, [anchor.el, option]);
-
   const inlineStyle = {
     ...style,
     top: (style.top as number) + LISTBOX_PADDING,
   };
-
-  const handleClick = (
-    event: React.MouseEvent<HTMLElement>,
-    type: PopperType
-  ) => {
-    event.preventDefault();
-    event.stopPropagation();
-    // setAnchorEl(anchorEl ? null : event.currentTarget);
-
-    setAnchor({
-      el: type == anchor.type ? undefined : event.currentTarget,
-      type: type == anchor.type ? undefined : type,
-    });
-    new BroadcastChannel("action-click-event").postMessage(option.name);
-  };
-  console.log(anchor);
 
   return (
     <Box component="li" {...dataSet[0]} noWrap style={inlineStyle}>
@@ -112,70 +71,9 @@ export const RenderRow = (
           )}
           <TypeChart data={option.typeChart} className="mr-4" />
         </div>
-        <div className="flex md:hidden gap-4">
-          <ListItemButton
-            onClick={(e) => {
-              handleClick(e, PopperType.Types);
-            }}
-            disableGutters
-            className="text-gray-800 flex items-center"
-          >
-            <Image
-              alt="type"
-              width={24}
-              height={24}
-              loading="lazy"
-              src="https://github.com/PokeMiners/pogo_assets/blob/master/Images/Badges/Achievements/Badge_37_1_01.png?raw=true"
-            />
-          </ListItemButton>
-          <ListItemButton
-            disableGutters
-            onClick={(e) => handleClick(e, PopperType.Ratings)}
-            className="text-gray-800 flex items-center"
-          >
-            <Image
-              alt="league"
-              width={24}
-              height={24}
-              loading="lazy"
-              src="https://github.com/PokeMiners/pogo_assets/blob/master/Images/Buddy/ic_buddy_battleColor.png?raw=true"
-            />
-          </ListItemButton>
-        </div>
+
         <TierList tiers={option.tiers!} />
       </div>
-      <Popper
-        // disablePortal
-        open={anchor.type === PopperType.Ratings}
-        anchorEl={anchor.el}
-        sx={{ zIndex: 99999 }}
-        className="bg-gray-900 z-50 w-full p-2 mx-4"
-        transition
-      >
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={200}>
-            <Paper sx={{ background: "transparent" }}>
-              <TierList hiddenMobile={false} tiers={option.tiers!} />
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
-
-      <Popper
-        open={anchor.type === PopperType.Types}
-        anchorEl={anchor.el}
-        sx={{ zIndex: 99999, margin: 25 }}
-        className="bg-gray-900 z-50 w-full p-2 mx-4"
-        transition
-      >
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={200}>
-            <Paper sx={{ background: "transparent" }}>
-              <TypeChart hiddenMobile={false} data={option.typeChart} />
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
     </Box>
   );
 };

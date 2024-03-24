@@ -17,7 +17,7 @@ export const TypeChart: FC<TypeChartProps> = ({
   return (
     <div
       className={classNames(
-        "flex items-end gap-2 w-full justify-end flex-col md:flex-row py-1 sm:flex-nowrap overflow-x-auto",
+        "flex items-center  gap-2 w-full  flex-col md:flex-row py-1 sm:flex-nowrap overflow-x-auto",
         {
           "!hidden md:!flex": hiddenMobile,
         },
@@ -42,24 +42,26 @@ export const TypeChart: FC<TypeChartProps> = ({
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-2 justify-end">
-        {data.notVeryEffective.map(({ id, val, key }) => (
-          <div
-            key={key}
-            className="flex items-center gap-1.5 flex flex-shrink-0"
-          >
-            <span className="text-green-400 text-sm">{val}x</span>
-            <Image
-              alt={id}
-              title={id}
-              src={`https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.0/type-icons/${id}.png`}
-              width={20}
-              height={20}
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </div>
+      {data.notVeryEffective.length > 0 && (
+        <div className="flex items-center gap-2 justify-center">
+          {data.notVeryEffective.map(({ id, val, key }) => (
+            <div
+              key={key}
+              className="flex items-center gap-1.5 flex flex-shrink-0"
+            >
+              <span className="text-green-400 text-sm">{val}x</span>
+              <Image
+                alt={id}
+                title={id}
+                src={`https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.0/type-icons/${id}.png`}
+                width={20}
+                height={20}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

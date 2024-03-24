@@ -55,6 +55,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import KeyboardArrowDownIcon from "@mui/icons-material/ArrowDownward";
 import scrollIntoView from "scroll-into-view-if-needed";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 
 export default function Home() {
   const { dictionary } = useContext(I18nContext);
@@ -100,11 +101,11 @@ export default function Home() {
                   </span>
                 </div>
               </AccordionSummary>
-              <AccordionDetails sx={{ height: 750, overflowY: "auto" }}>
+              <AccordionDetails sx={{ height: "60vh", overflowY: "auto" }}>
                 <div className="flex flex-col gap-6 rounded">
                   {tiers.map(({ id, name, pokemon }) => (
                     <div key={`tier-${id}`}>
-                      <div className="flex items-center justify-between font-bold text-xl text-gray-300 sticky top-0 z-20  bg-opacity-60  py-2 px-4 w-full rounded bg-zinc-800">
+                      <div className="flex items-center justify-between font-bold text-lg md:text-xl text-gray-300 sticky top-0 z-20  bg-opacity-60 py-1 md:py-2 px-4 w-full rounded bg-zinc-800">
                         <h2>{name}</h2>
                         {/* <button
                           className="tier-section"
@@ -125,7 +126,7 @@ export default function Home() {
                           <KeyboardArrowDownIcon />
                         </button> */}
                       </div>
-                      <div className="mt-4 grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-5 flex-wrap justify-start">
+                      <div className="mt-4 grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2.5 md:gap-5 flex-wrap justify-start">
                         {pokemon.map((p: any) => (
                           <Pokemon key={p.key} {...p} />
                         ))}
@@ -135,38 +136,16 @@ export default function Home() {
                 </div>
               </AccordionDetails>
             </Accordion>
-            // <section key={`section-${name}`}>
-            //   <div className="flex items-center justify-center gap-3 sticky top-0 z-20 bg-black shadow-lg py-2 px-4">
-            //     <Image
-            //       // className="-rotate-180"
-            //       width={30}
-            //       height={30}
-            //       alt={name}
-            //       loading="lazy"
-            //       objectFit="scale-down"
-            //       src={`https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.2/league-icons/${id}.png`}
-            //     />
-            //     <h1 className="block text-gray-300 text-2xl font-bold">
-            //       {name}
-            //     </h1>
-            //   </div>
-            //   <div className="flex flex-col gap-6 rounded">
-            //     {tiers.map(({ id, name, pokemon }) => (
-            //       <div key={`tier-${id}`}>
-            //         <h2 className="font-bold text-xl text-gray-300 sticky top-0 z-20 bg-black bg-opacity-60 shadow-lg w-max py-2 px-4 ">
-            //           {name}
-            //         </h2>
-            //         <div className="mt-4 grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-5 flex-wrap justify-start">
-            //           {pokemon.map((p) => (
-            //             <Pokemon key={`${name}-${p.name}`} {...p} />
-            //           ))}
-            //         </div>
-            //       </div>
-            //     ))}
-            //   </div>
-            // </section>
           ))}
       </div>
+      {/* <SwipeableDrawer
+        anchor="bottom"
+        open={true}
+        onClose={() => {}}
+        onOpen={() => {}}
+      >
+        <div>Hellow</div>
+      </SwipeableDrawer> */}
     </div>
   );
 }

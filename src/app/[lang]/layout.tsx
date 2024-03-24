@@ -7,6 +7,7 @@ import { i18n, type Locale } from "../../i18n-config";
 import theme from "../utils/theme";
 import { getDictionary } from "@/get-dictionary";
 import { I18nContextProvider } from "@/contexts/I18nContext";
+import { DrawerContextProvider } from "@/contexts/DrawerContext";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -24,10 +25,10 @@ export default async function Root({
   return (
     <html lang={params.lang} className="dark">
       <body>
-        <AppRouterCacheProvider>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <I18nContextProvider dictionary={dictionary}>
-              {children}
+              <DrawerContextProvider>{children}</DrawerContextProvider>
             </I18nContextProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
