@@ -24,12 +24,9 @@ export const TypeChart: FC<TypeChartProps> = ({
         className
       )}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap md:flex-nowrap items-center gap-2">
         {data.effective.map(({ id, val, key }) => (
-          <div
-            key={key}
-            className="flex items-center gap-1.5 flex flex-shrink-0"
-          >
+          <div key={key} className="flex  items-center gap-1.5 flex-shrink-0">
             <span className="text-red-400 text-sm">{val}x</span>
             <Image
               alt={id}
@@ -43,12 +40,9 @@ export const TypeChart: FC<TypeChartProps> = ({
         ))}
       </div>
       {data.notVeryEffective.length > 0 && (
-        <div className="flex items-center gap-2 justify-center">
+        <div className="flex flex-wrap md:flex-nowrap items-center gap-2 justify-center">
           {data.notVeryEffective.map(({ id, val, key }) => (
-            <div
-              key={key}
-              className="flex items-center gap-1.5 flex flex-shrink-0"
-            >
+            <div key={key} className="flex items-center gap-1.5 flex-shrink-0">
               <span className="text-green-400 text-sm">{val}x</span>
               <Image
                 alt={id}

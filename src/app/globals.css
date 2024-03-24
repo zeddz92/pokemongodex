@@ -106,3 +106,6 @@ body {
 .drawer-title {
   @apply text-xs text-gray-300 font-semibold py-1 bg-blue-600 bg-opacity-25 w-full text-center;
 }
+.drawer-pokemon-title {
+  @apply flex items-center gap-4;
+}

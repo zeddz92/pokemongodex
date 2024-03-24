@@ -54,24 +54,14 @@ export const Pokemon: FC<PokemonT> = ({
             key={`evol-line-${pk.name}`}
             className="rounded bg-gray-800 bg-opacity-55 p-2"
           >
-            <div className="relative w-10 h-10">
-              <Image
-                fill
-                alt={pk.name}
-                loading="lazy"
-                objectFit="scale-down"
-                src={pk.img}
-              />
-              {isShadow && (
-                <Image
-                  fill
-                  className="absolute inset-0 opacity-65"
-                  alt="shadow_background"
-                  loading="lazy"
-                  src="https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.0/shadow_background.png"
-                />
-              )}
-            </div>
+            <PokemonImage
+              width={32}
+              height={32}
+              alt={pk.name}
+              isShadow={isShadow}
+              loading="lazy"
+              src={pk.img}
+            />
           </div>
         ))}
       </div>

@@ -25,7 +25,7 @@ export default async function Root({
   return (
     <html lang={params.lang} className="dark">
       <body>
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+        <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <I18nContextProvider dictionary={dictionary}>
               <DrawerContextProvider>{children}</DrawerContextProvider>

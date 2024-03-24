@@ -50,7 +50,7 @@ export const DrawerContextProvider: FC<{
         {state.data && (
           <div className="drawer-container">
             <div className="flex items-center justify-between px-4">
-              <div className="flex items-center gap-4">
+              <div className="drawer-pokemon-title">
                 <PokemonImage
                   alt={state.data.name}
                   isShadow={state.data.isShadow}
@@ -85,7 +85,7 @@ export const DrawerContextProvider: FC<{
                 <h2 className="drawer-title">
                   {dictionary.pokemon.evolutionaryLine}
                 </h2>
-                <div className="flex items-center justify-center gap-4  px-3">
+                <div className="flex items-center justify-center gap-4 px-3">
                   {state.data.evolutionaryLine.map((p, i) => (
                     <>
                       <div key={p.key} className="flex flex-col items-center">
@@ -111,7 +111,7 @@ export const DrawerContextProvider: FC<{
             )}
 
             <h2 className="drawer-title">{dictionary.pokemon.typeChart}</h2>
-            <div className="border-y border-gray-500">
+            <div className="px-4">
               <TypeChart data={state.data.typeChart} hiddenMobile={false} />
             </div>
 
