@@ -26,7 +26,7 @@ export const DrawerContextProvider: FC<{
 }> = ({ children }) => {
   const { dictionary } = useContext(I18nContext);
   const [state, setState] = useState<{ open: boolean; data?: Pokemon }>({
-    open: true,
+    open: false,
   });
 
   const openDrawer = (data: Pokemon) => {
