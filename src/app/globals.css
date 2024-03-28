@@ -101,11 +101,35 @@ body {
 }
 
 .drawer-container {
-  @apply flex flex-col gap-2 py-3;
+  @apply flex flex-col gap-2.5 py-3 bg-zinc-900;
 }
 .drawer-title {
-  @apply text-xs text-gray-300 font-semibold py-1 bg-blue-600 bg-opacity-25 w-full text-center;
+  @apply text-xs text-gray-200 font-semibold py-1 bg-gray-800 bg-opacity-65  w-full text-center shadow-lg;
 }
 .drawer-pokemon-title {
   @apply flex items-center gap-4;
+}
+
+.drawer-move-set {
+  min-height: 29px;
+@apply px-8 flex justify-between;
+}
+
+.move-set-charged{
+  @apply flex flex-col items-start gap-1;
+}
+
+.move-set-rate span{
+  @apply py-1 px-3 rounded bg-slate-700 shadow-lg text-xs font-semibold;
+}
+
+
+.move-set-rate {
+  @apply text-end;
+}
+
+
+.w-45p{
+  width: 45%;
+
 }

@@ -34,28 +34,15 @@ import {
   useRef,
   useState,
 } from "react";
-import { VariableSizeList, ListChildComponentProps } from "react-window";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import ListSubheader from "@mui/material/ListSubheader";
-import { useTheme, styled } from "@mui/material/styles";
-import { PokemonImage } from "../../components/PokemonImage";
-import classNames from "classnames";
-import { Dictionary, I18nContext } from "@/contexts/I18nContext";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import Collapse from "@mui/material/Collapse";
-import StarBorder from "@mui/icons-material/StarBorder";
-import List from "@mui/material/List";
+
+import { I18nContext } from "@/contexts/I18nContext";
+
 import { PokemonAutocomplete } from "@/components/PokemonAutocomplete/PokemonAutocomplete";
 import Accordion from "@mui/material/Accordion";
-import AccordionActions from "@mui/material/AccordionActions";
+
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Button from "@mui/material/Button";
-import KeyboardArrowDownIcon from "@mui/icons-material/ArrowDownward";
-import scrollIntoView from "scroll-into-view-if-needed";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 
 export default function Home() {
   const { dictionary } = useContext(I18nContext);
@@ -73,7 +60,7 @@ export default function Home() {
       <div className="mt-8 overflow-y-hidden h-full">
         {data
           .sort((a, b) => a.id - b.id)
-          .map(({ id, name, tiers, maxCP }) => (
+          .map(({ id, name, tiers }) => (
             <Accordion
               key={`section-${name}`}
               slotProps={{ transition: { unmountOnExit: true } }}
@@ -96,9 +83,9 @@ export default function Home() {
                     />
                     <h1 className="block text-gray-400 font-bold">{name}</h1>
                   </div>
-                  <span>
+                  {/* <span>
                     Max CP: <span className="font-bold">{maxCP}</span>
-                  </span>
+                  </span> */}
                 </div>
               </AccordionSummary>
               <AccordionDetails sx={{ height: "60vh", overflowY: "auto" }}>

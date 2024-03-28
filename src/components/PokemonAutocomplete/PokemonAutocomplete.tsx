@@ -7,7 +7,12 @@ import TextField from "@mui/material/TextField";
 import React, { FC, useCallback, useContext, useMemo } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "@emotion/styled";
-import { FilterOptionsState, Popper } from "@mui/material";
+import {
+  FilterOptionsState,
+  Popper,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import ListboxComponent from "./components/ListBoxComponent";
 import { PokemonProps } from "../Pokemon";
 import { I18nContext } from "@/contexts/I18nContext";
@@ -30,6 +35,10 @@ const StyledPopper = styled(Popper)({
 
 export const PokemonAutocomplete: FC<PokemonAutocompleteProps> = () => {
   const { dictionary } = useContext(I18nContext);
+  const theme = useTheme();
+  const smUp = useMediaQuery(theme.breakpoints.up("sm"), {
+    noSsr: true,
+  });
 
   const getOptionLabel = useCallback(
     ({ names }: PokemonProps) => names[dictionary.locale],
@@ -83,9 +92,10 @@ export const PokemonAutocomplete: FC<PokemonAutocompleteProps> = () => {
       fullWidth
       openOnFocus
       clearOnBlur={false}
+      clearOnEscape={false}
       size="small"
       onChange={(e, data) => {
-        if (data) {
+        if (data && !smUp) {
           openDrawer(data as any);
         }
       }}

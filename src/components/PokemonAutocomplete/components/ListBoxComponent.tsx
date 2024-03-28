@@ -68,7 +68,6 @@ export const ListboxComponent = forwardRef<
   };
 
   const gridRef = useResetCache(itemCount);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const renderRow = useCallback((props: ListChildComponentProps) => {
     return RenderRow(props);
