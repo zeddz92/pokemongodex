@@ -5,7 +5,8 @@ import { I18nContext } from "@/contexts/I18nContext";
 import { MoveSet } from "@/types/Pokemon";
 import MobileStepper from "@mui/material/MobileStepper";
 import Box from "@mui/material/Box";
-import SwipeableViews from "react-swipeable-views";
+//@ts-ignore
+import SwipeableViews from "react-swipeable-views-react-18-fix";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
