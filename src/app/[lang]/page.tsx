@@ -53,9 +53,9 @@ export default function Home() {
         <PokemonAutocomplete onSelect={() => undefined} />
       </div>
 
-      <div className="mt-8 text-center">
+      {/* <div className="mt-8 text-center">
         <h1 className="text-2xl font-semibold text-gray-300">Tier List</h1>
-      </div>
+      </div> */}
 
       <div className="mt-8 overflow-y-hidden h-full">
         {data
