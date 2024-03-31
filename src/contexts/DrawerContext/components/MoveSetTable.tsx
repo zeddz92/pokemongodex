@@ -7,10 +7,9 @@ import MobileStepper from "@mui/material/MobileStepper";
 import Box from "@mui/material/Box";
 //@ts-ignore
 import SwipeableViews from "react-swipeable-views-react-18-fix";
-import Button from "@mui/material/Button";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+
 import { useTheme } from "@mui/material/styles";
+import classNames from "classnames";
 
 type MoveSetTableProps = {
   title: string;
@@ -35,6 +34,9 @@ export const MoveSetTable: FC<MoveSetTableProps> = ({ title, data }) => {
   const handleStepChange = (step: number) => {
     setActiveStep(step);
   };
+
+  const moveClasses = (isElite: boolean) =>
+    classNames("move-name", { "elite-move": isElite });
 
   return (
     <>
@@ -69,7 +71,9 @@ export const MoveSetTable: FC<MoveSetTableProps> = ({ title, data }) => {
                           "English"
                         ].toLowerCase()}.png`}
                       />
-                      <span>{move.quick.names[dictionary.locale]}</span>
+                      <span className={moveClasses(move.quick.isElite)}>
+                        {move.quick.names[dictionary.locale]}
+                      </span>
                     </div>
                   </td>
                   <td>
@@ -88,7 +92,7 @@ export const MoveSetTable: FC<MoveSetTableProps> = ({ title, data }) => {
                               "English"
                             ].toLowerCase()}.png`}
                           />
-                          <span className="move-name">
+                          <span className={moveClasses(move.isElite)}>
                             {move.names[dictionary.locale]}
                           </span>
                         </div>

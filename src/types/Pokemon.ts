@@ -14,6 +14,7 @@ export type Move = {
   img: string;
   type: Type;
   key: string;
+  isElite: boolean;
 };
 
 export type MoveSet = {
