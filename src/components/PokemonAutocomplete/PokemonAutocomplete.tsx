@@ -69,6 +69,7 @@ export const PokemonAutocomplete: FC<PokemonAutocompleteProps> = () => {
   const filterOptions = useCallback(
     (options: PokemonProps[], state: FilterOptionsState<PokemonProps>) => {
       const search = state.inputValue.toLocaleLowerCase().trim();
+
       return options.filter(
         (option) =>
           option.names[dictionary.locale]
@@ -94,6 +95,10 @@ export const PokemonAutocomplete: FC<PokemonAutocompleteProps> = () => {
       clearOnBlur={false}
       clearOnEscape={false}
       size="small"
+      selectOnFocus={true}
+      onFocus={(e) => {
+        e.currentTarget.querySelector("input")?.select();
+      }}
       onChange={(e, data) => {
         if (data && !smUp) {
           openDrawer(data as any);

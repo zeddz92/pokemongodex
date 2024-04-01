@@ -132,6 +132,12 @@ body {
   @apply text-yellow-300;
 }
 
+.drawer-header {
+  @apply flex items-center justify-between px-5;
+}
+.drawer-max-cp  {
+  @apply font-semibold text-xs text-gray-400;
+}
 
 .w-45p{
   width: 45%;

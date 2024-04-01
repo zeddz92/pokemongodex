@@ -27,6 +27,7 @@ export interface Pokemon {
   id: number;
   key: string;
   name: string;
+  url: string;
   names: Languages;
   tiers: Tier;
   stats: {
@@ -40,6 +41,7 @@ export interface Pokemon {
   rate: number | string;
   isShadow: boolean;
   typeChart: TypeChart;
+  maxCP: number;
   moveSet: {
     pvp: MoveSet[];
     pve: MoveSet[];

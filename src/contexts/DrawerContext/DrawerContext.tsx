@@ -243,7 +243,7 @@ export const DrawerContextProvider: FC<{
       >
         {state.data && (
           <div className="drawer-container">
-            <div className="flex items-center justify-between px-4">
+            <a className="drawer-header" href={state.data.url} target="_blank">
               <div className="drawer-pokemon-title">
                 <PokemonImage
                   alt={state.data.name}
@@ -256,7 +256,9 @@ export const DrawerContextProvider: FC<{
                   <h2 className="text-zinc-400 text-xl font-semibold">
                     {state.data.names[dictionary.locale]}
                   </h2>
-                  {/* <s pan className="text-xs text-gray-300">Max CP: 2500</s> */}
+                  <span className="drawer-max-cp">
+                    Max CP: {state.data.maxCP}
+                  </span>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -272,7 +274,7 @@ export const DrawerContextProvider: FC<{
                   />
                 ))}
               </div>
-            </div>
+            </a>
 
             {state.data.evolutionaryLine.length > 0 && (
               <>
@@ -282,7 +284,12 @@ export const DrawerContextProvider: FC<{
                 <div className="flex items-center justify-center gap-4 px-3">
                   {state.data.evolutionaryLine.map((p, i) => (
                     <>
-                      <div key={p.key} className="flex flex-col items-center">
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        key={p.key}
+                        className="flex flex-col items-center"
+                      >
                         <PokemonImage
                           alt={p.names[dictionary.locale]}
                           title={p.names[dictionary.locale]}
@@ -294,7 +301,7 @@ export const DrawerContextProvider: FC<{
                         <span className="text-xs text-gray-300">
                           {p.names[dictionary.locale]}
                         </span>
-                      </div>
+                      </a>
                       {i !== state.data!.evolutionaryLine.length - 1 && (
                         <ArrowForwardIcon color="disabled" />
                       )}
