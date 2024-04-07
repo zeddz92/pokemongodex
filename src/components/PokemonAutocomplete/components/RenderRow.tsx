@@ -50,7 +50,6 @@ export const RenderRow = (
               alt={option.names[dictionary.locale]}
             />
             <span className="text-gray-300 text-lg  text-nowrap">
-              {option.isShadow ? dictionary.pokemon.shadow : ""}{" "}
               {option.names[dictionary.locale]}
             </span>
           </div>

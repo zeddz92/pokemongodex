@@ -58,7 +58,7 @@ export default function Home() {
       </div> */}
 
       <div className="mt-8 overflow-y-hidden h-full">
-        {data
+        {(data as any[])
           .sort((a, b) => a.id - b.id)
           .map(({ id, name, tiers }) => (
             <Accordion
@@ -79,7 +79,7 @@ export default function Home() {
                       alt={name}
                       loading="lazy"
                       objectFit="scale-down"
-                      src={`https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.2/league-icons/${id}.png`}
+                      src={`https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.5/league-icons/${id}.png`}
                     />
                     <h1 className="block text-gray-400 font-bold">{name}</h1>
                   </div>
@@ -90,7 +90,7 @@ export default function Home() {
               </AccordionSummary>
               <AccordionDetails sx={{ height: "60vh", overflowY: "auto" }}>
                 <div className="flex flex-col gap-6 rounded">
-                  {tiers.map(({ id, name, pokemon }) => (
+                  {(tiers as any[]).map(({ id, name, pokemon }) => (
                     <div key={`tier-${id}`}>
                       <div className="flex items-center justify-between font-bold text-lg md:text-xl text-gray-300 sticky top-0 z-20  bg-opacity-60 py-1 md:py-2 px-4 w-full rounded bg-zinc-800">
                         <h2>{name}</h2>

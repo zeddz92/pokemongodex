@@ -6,7 +6,7 @@ export type TypeChart = {
 };
 
 export type Languages = { [lang: string]: string };
-export type Tier = { [id: string]: number | string };
+export type Tier = { [id: string]: { rate: number | string; maxCP: number } };
 export type Type = { type: string; names: Languages };
 export type Move = {
   name: string;
@@ -26,6 +26,7 @@ export type MoveSet = {
 export interface Pokemon {
   id: number;
   key: string;
+  formId: string;
   name: string;
   url: string;
   names: Languages;

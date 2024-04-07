@@ -243,6 +243,7 @@ export const DrawerContextProvider: FC<{
       >
         {state.data && (
           <div className="drawer-container">
+            <div className="drawer-indicator"></div>
             <a className="drawer-header" href={state.data.url} target="_blank">
               <div className="drawer-pokemon-title">
                 <PokemonImage
@@ -261,6 +262,7 @@ export const DrawerContextProvider: FC<{
                   </span>
                 </div>
               </div>
+
               <div className="flex items-center gap-3">
                 {state.data.types.map((type, i) => (
                   <Image
@@ -312,7 +314,11 @@ export const DrawerContextProvider: FC<{
             )}
             <h2 className="drawer-title">{dictionary.pokemon.tiers}</h2>
             <div className="">
-              <TierList tiers={state.data!.tiers!} hiddenMobile={false} />
+              <TierList
+                formId={state.data.formId.toLowerCase()}
+                tiers={state.data!.tiers!}
+                hiddenMobile={false}
+              />
             </div>
             <h2 className="drawer-title">{dictionary.pokemon.typeChart}</h2>
             <div className="px-4">

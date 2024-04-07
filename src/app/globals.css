@@ -101,7 +101,7 @@ body {
 }
 
 .drawer-container {
-  @apply flex flex-col gap-2.5 py-3 bg-zinc-900;
+  @apply flex flex-col gap-2.5 py-3 bg-slate-900;
 }
 .drawer-title {
   @apply text-xs text-gray-200 font-semibold py-1 bg-gray-800 bg-opacity-65  w-full text-center shadow-lg;
@@ -142,4 +142,8 @@ body {
 .w-45p{
   width: 45%;
 
+}
+
+.drawer-indicator {
+  @apply h-1 w-12 bg-zinc-500 rounded-full self-center shadow-lg;
 }

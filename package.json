@@ -38,6 +38,7 @@
     "@types/react-window": "^1.8.8",
     "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.0.1",
+    "clone": "^2.1.2",
     "eslint": "^8",
     "eslint-config-next": "14.1.1",
     "jsdom": "^24.0.0",

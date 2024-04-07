@@ -32,6 +32,11 @@ const nextConfig = {
         hostname: "www.serebii.net",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "pvpoke.com",
+        port: "",
+      },
     ],
   },
 };

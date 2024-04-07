@@ -5,11 +5,13 @@ import { Tier } from "@/types/Pokemon";
 
 interface TierListProps {
   tiers: Tier;
+  formId?: string;
   className?: string;
   hiddenMobile?: boolean;
 }
 export const TierList: FC<TierListProps> = ({
   tiers,
+  formId,
   className = "",
   hiddenMobile = true,
 }) => {
@@ -21,17 +23,19 @@ export const TierList: FC<TierListProps> = ({
         className
       )}
     >
-      {Object.entries(tiers).map(([id, rate]) => (
-        <div
+      {Object.entries(tiers).map(([id, { rate, maxCP }]) => (
+        <a
+          href={`https://pvpoke.com/battle/multi/${maxCP}/all/${formId}/11/0-4-3/2-1/`}
+          target="_blank"
           key={`tier-list-${id}-${rate}`}
           style={{ minWidth: 74 }}
           className={classNames(
             "flex items-center gap-0 justify-center rounded px-1.5 py-1 md:py-1.5 bg-opacity-20",
             {
-              "bg-blue-500": id === "1",
-              "bg-amber-300": id === "2",
-              "bg-purple-500": id === "3",
-              "bg-green-500": id === "4",
+              "bg-blue-500": id === "great_league",
+              "bg-amber-300": id === "ultra_league",
+              "bg-purple-500": id === "master_league",
+              "bg-green-500": id === "attackers",
             }
           )}
         >
@@ -43,12 +47,12 @@ export const TierList: FC<TierListProps> = ({
             width={16}
             height={16}
             alt=""
-            src={`https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.2/league-icons/${id}.png`}
+            src={`https://cdn.jsdelivr.net/npm/pokemon-assets@1.0.5/league-icons/${id}.png`}
           />
           <span className="text-sm font-semibold text-gray-300 text-nowrap">
             {String(rate).replace("Tier", "")}
           </span>
-        </div>
+        </a>
       ))}
     </div>
   );
